@@ -1,65 +1,78 @@
-import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
+import '../config/app_constants.dart';
+import 'package:http/http.dart' as http;
 
-import '../config/app_assets.dart';
-
-class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
-
+class ProductForm extends StatefulWidget {
   @override
-  State<OrderPage> createState() => _OrderPageState();
+  _ProductFormState createState() => _ProductFormState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _ProductFormState extends State<ProductForm> {
+  final TextEditingController weightController = TextEditingController();
+  final TextEditingController shopIdController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+
+  Future<void> _submitForm() async {
+    final response = await http.post(
+      Uri.parse('${AppConstants.baseURL}/product'),
+      body: {
+        'weight': weightController.text,
+        'shop_id': shopIdController.text,
+        'description': descriptionController.text,
+      },
+    );
+
+    if (response.statusCode == 201) {
+      // Berhasil menyimpan data
+      print('Product created successfully');
+    } else {
+      // Gagal menyimpan data
+      print('Failed to create product');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(30),
-          ),
-        
-        ),
+        title: Text('Product Form'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(0),
-        children: [
-            headerImage(context),
-            Container(
-            height: 50,
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text(
-                'Order',
-                style: TextStyle(height: 1, fontSize: 18),
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: weightController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Weight'),
             ),
-          ),
-          DView.spaceHeight(50),
-        ],
+            SizedBox(height: 16),
+            TextField(
+              controller: shopIdController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: 'Shop ID'),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: descriptionController,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              decoration: InputDecoration(labelText: 'Description'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _submitForm,
+              child: Text('Save'),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-
-
-Widget headerImage(BuildContext context){
-  return AspectRatio(
-    aspectRatio: 1,
-    child: Stack(
-      fit: StackFit.expand,
-      children: [
-        ClipRRect(
-          child: Image.asset(
-            
-            AppAssets.bgShop,
-          )
-        ),
-      ],
-    ),
-  );
+void main() {
+  runApp(MaterialApp(
+    home: ProductForm(),
+  ));
 }

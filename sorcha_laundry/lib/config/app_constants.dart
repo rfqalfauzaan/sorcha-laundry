@@ -9,7 +9,7 @@ class AppConstants {
 
   static const _host = 'http://192.168.1.6:8080';
 
-  /// ``` baseURL = 'http://192.168.1.5:8000/api' ```
+  /// ``` baseURL = 'http://192.168.1.6:8080/api' ```
   static const baseURL = '$_host/api';
 
   /// ``` baseURL = 'http://192.168.1.5:8000/storage' ```
@@ -46,10 +46,10 @@ class AppConstants {
   ];
 
   static const homeCategories = [
-    'All',
-    'Regular',
-    'Express',
-    'Economical',
-    'Exlusive',
+    // 'All',
+    // 'Regular',
+    // 'Express',
+    // 'Economical',
+    // 'Exlusive',
   ];
 }

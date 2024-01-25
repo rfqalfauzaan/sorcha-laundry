@@ -10,7 +10,7 @@ import '../models/user_model.dart';
 
 class LaundryDatasource {
   static Future<Either<Failure, Map>> readByUser(int userId) async {
-    Uri url = Uri.parse('${AppConstants.baseURL}/laundry/user/$userId');
+    Uri url = Uri.parse('${AppConstants.baseURL}/laundry/');
     final token = await AppSession.getBearerToken();
     try {
       final response = await http.get(

@@ -104,17 +104,17 @@ class AccountView extends StatelessWidget {
               ),
             ),
             DView.spaceHeight(10),
-            ListTile(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 30,
-              ),
-              onTap: () {Nav.push(context,  const EditAccount());},
-              dense: true,
-              horizontalTitleGap: 0,
-              leading: const Icon(Icons.edit),
-              title: const Text('Edit Account'),
-              trailing: const Icon(Icons.navigate_next),
-            ),
+            // ListTile(
+            //   contentPadding: const EdgeInsets.symmetric(
+            //     horizontal: 30,
+            //   ),
+            //   onTap: () {Nav.push(context,  const EditAccount());},
+            //   dense: true,
+            //   horizontalTitleGap: 0,
+            //   leading: const Icon(Icons.edit),
+            //   title: const Text('Edit Account'),
+            //   trailing: const Icon(Icons.navigate_next),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: OutlinedButton(
@@ -134,19 +134,19 @@ class AccountView extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              onTap: () {},
-              contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-              dense: true,
-              leading: const Icon(Icons.dark_mode),
-              horizontalTitleGap: 0,
-              title: const Text('Dark Mode'),
-              trailing: Switch(
-                activeColor: AppColors.primary,
-                value: false,
-                onChanged: (value) {},
-              ),
-            ),
+            // ListTile(
+            //   onTap: () {},
+            //   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+            //   dense: true,
+            //   leading: const Icon(Icons.dark_mode),
+            //   horizontalTitleGap: 0,
+            //   title: const Text('Dark Mode'),
+            //   trailing: Switch(
+            //     activeColor: AppColors.primary,
+            //     value: false,
+            //     onChanged: (value) {},
+            //   ),
+            // ),
             ListTile(
               onTap: () {
                 showAboutDialog(
