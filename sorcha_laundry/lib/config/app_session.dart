@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sorcha_laundry/models/laundry_model.dart';
 
 import '../models/user_model.dart';
 
@@ -43,5 +44,14 @@ class AppSession {
     final pref = await SharedPreferences.getInstance();
     bool success = await pref.remove('bearer_token');
     return success;
+  }
+
+   static Future<LaundryModel?> getlaundry(result) async {
+    final pref = await SharedPreferences.getInstance();
+    String? laundryString = pref.getString('laundry');
+    if (laundryString == null) return null;
+
+    var userMap = jsonDecode(laundryString);
+    return LaundryModel.fromJson(userMap);
   }
 }

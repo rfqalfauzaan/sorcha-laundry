@@ -9,7 +9,7 @@ import '../config/failure.dart';
 
 class ShopDatasource {
   static Future<Either<Failure, Map>> readRecommendationLimit() async {
-    Uri url = Uri.parse('${AppConstants.baseURL}/shop/recommendation/limit');
+    Uri url = Uri.parse ('${AppConstants.baseURL}/shop/recommendation/limit');
     final token = await AppSession.getBearerToken();
     try {
       final response = await http.get(

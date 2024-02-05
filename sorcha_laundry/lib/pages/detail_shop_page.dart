@@ -3,7 +3,9 @@ import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sorcha_laundry/config/nav.dart';
-import 'package:sorcha_laundry/pages/order_page.dart';
+
+
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
@@ -12,6 +14,8 @@ import '../config/app_colors.dart';
 import '../config/app_constants.dart';
 import '../config/app_format.dart';
 import '../models/shop_model.dart';
+import 'Orderpage.dart';
+
 
 class DetailShopPage extends StatelessWidget {
   const DetailShopPage({super.key, required this.shop});
@@ -56,7 +60,7 @@ class DetailShopPage extends StatelessWidget {
             height: 50,
             margin: const EdgeInsets.symmetric(horizontal: 24),
             child: ElevatedButton(
-              onPressed: () { Nav.push(context, ProductForm());},
+              onPressed: () { Nav.push(context,  MyForm ());},
               child: const Text(
                 'Order',
                 style: TextStyle(height: 1, fontSize: 18),

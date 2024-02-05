@@ -2,9 +2,7 @@ import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sorcha_laundry/pages/dashboard_views/edit_account_view.dart';
 
-import '../../config/app_assets.dart';
 import '../../config/app_colors.dart';
 import '../../config/app_session.dart';
 import '../../config/nav.dart';

@@ -4,12 +4,10 @@ import 'user_model.dart';
 class LaundryModel {
   LaundryModel({
     required this.id,
-    required this.claimCode,
     required this.userId,
     required this.shopId,
     required this.weight,
-    required this.withPickup,
-    required this.withDelivery,
+  
     required this.pickupAddress,
     required this.deliveryAddress,
     required this.total,
@@ -22,12 +20,9 @@ class LaundryModel {
   });
 
   int id;
-  String claimCode;
   int userId;
   int shopId;
   double weight;
-  bool withPickup;
-  bool withDelivery;
   String pickupAddress;
   String deliveryAddress;
   double total;
@@ -40,12 +35,10 @@ class LaundryModel {
 
   factory LaundryModel.fromJson(Map<String, dynamic> json) => LaundryModel(
         id: json["id"],
-        claimCode: json["claim_code"],
         userId: json["user_id"],
         shopId: json["shop_id"],
         weight: json["weight"]?.toDouble(),
-        withPickup: json["with_pickup"] == 1,
-        withDelivery: json["with_delivery"] == 1,
+
         pickupAddress: json["pickup_address"],
         deliveryAddress: json["delivery_address"],
         total: json["total"]?.toDouble(),
@@ -59,12 +52,9 @@ class LaundryModel {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "claim_code": claimCode,
         "user_id": userId,
         "shop_id": shopId,
         "weight": weight,
-        "with_pickup": withPickup,
-        "with_delivery": withDelivery,
         "pickup_address": pickupAddress,
         "delivery_address": deliveryAddress,
         "total": total,

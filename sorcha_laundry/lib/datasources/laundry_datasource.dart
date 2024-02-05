@@ -50,4 +50,39 @@ class LaundryDatasource {
       return Left(FetchFailure(e.toString()));
     }
   }
+
+
+  static Future<Either<Failure, Map>> create(
+    String shopId,
+    String weight,
+    String pickupAddress,
+    String deliveryAddress,
+    String total,
+    String description,
+  ) async {
+    Uri url = Uri.parse('${AppConstants.baseURL}/laundries');
+    final token = await AppSession.getBearerToken();
+    try {
+      final response = await http.post(
+        url,
+        headers: AppRequest.header(token),
+        body: 
+          {
+            'shop_id': shopId,
+            'weight': weight,
+            'pickup_address': pickupAddress,
+            'delivery_address': deliveryAddress,
+            'total': total,
+            'description': description,
+          },
+      );
+      final data = AppResponse.data(response);
+      return Right(data);
+    } catch (e) {
+      if (e is Failure) {
+        return Left(e);
+      }
+      return Left(FetchFailure(e.toString()));
+    }
+  }
 }
